@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { GiFruitBowl } from 'react-icons/gi';
+import { GiFruiting} from 'react-icons/gi';
 
 const Navbar = () => {
      const menuItem=<>
@@ -21,7 +23,7 @@ const Navbar = () => {
         {menuItem}
       </ul>
     </div>
-    <a class="btn btn-ghost normal-case text-xl">Graca-Grocery </a>
+    <a class="btn btn-ghost normal-case text-xl">   < GiFruiting size={30}  /> Graca-Grocery </a>
   </div>
   <div class="navbar-end hidden lg:flex">
     <ul class="menu menu-horizontal p-0">

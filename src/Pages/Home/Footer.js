@@ -1,9 +1,14 @@
 import React from 'react';
-
+import { GiFruitBowl } from 'react-icons/gi';
+import { GiFruiting} from 'react-icons/gi';
 const Footer = () => {
     return (
         <div>
             <footer class="footer p-10 bg-black text-neutral-content">
+            <div>
+    
+            <   GiFruiting size={30}  /> <p>Graca-Grocery<br></br>Providing reliable since 2002</p>
+  </div> 
   <div>
     <span class="footer-title">Services</span> 
     <a class="link link-hover">Branding</a>
@@ -25,6 +30,7 @@ const Footer = () => {
     <a class="link link-hover">Cookie policy</a>
   </div>
 </footer>
+<div className='bg-black text-center text-white'><small>Copyright © reserves by Graca-Grocery || 2022</small></div>
         </div>
     );
 };

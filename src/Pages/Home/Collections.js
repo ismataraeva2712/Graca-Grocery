@@ -6,7 +6,7 @@ import Collection from './Collection';
 const Collections = () => {
     const[collections,setCollections]=useState([])
     useEffect(()=>{
-        fetch('data.json')
+        fetch('http://localhost:5000/items')
         .then(res=>res.json())
         .then(data=>setCollections(data))
        
