@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import {  toast } from 'react-toastify';
 const Inventory = () => {
     const { id } = useParams()
     const [item, setItem] = useState({})
@@ -11,6 +12,28 @@ const Inventory = () => {
             .then(res => res.json())
             .then(data => setItem(data))
     }, [update])
+    const handleDeliverd=()=>{
+        if(item.quantity>0){
+            const newQuantity=parseInt(item.quantity)-1
+            const updatedQuantity={quantity:newQuantity}
+            fetch(`http://localhost:5000/items/${id}`,{
+                method:'PUT',
+                headers:{
+                    'content-type':'application/json'
+                },
+                body:JSON.stringify(updatedQuantity)
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                setUpdate(data)
+                toast.success('Delivery Successfull')
+            })
+        }
+        else{
+            toast.error('Sold Out')
+        }
+    }
+    // restock
     const handleRestack=event=>{
         event.preventDefault()
         const newQuantity=parseInt(event.target.quantity.value )+parseInt(item.quantity)
@@ -25,7 +48,7 @@ const Inventory = () => {
         .then(res=>res.json())
         .then(data=>{
             setUpdate(data)
-            alert('quantity updated')
+            toast.success("Restock successfully");
             event.target.reset()
         })
 
@@ -69,7 +92,7 @@ const Inventory = () => {
                                 data-aos-delay="60"
                                 data-aos-duration="1200"
                                 data-aos-easing="ease-in-out"
-                                data-aos-once="true">    <div class="badge badge-outline p-5 btn-primary text-white  font-bold">Delivered</div></div>
+                                data-aos-once="true">    <div class="badge badge-outline p-5 btn-primary text-white  font-bold" onClick={()=>handleDeliverd()}>Delivered</div></div>
                         </div>
                     </div>
                 </div>
