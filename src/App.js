@@ -9,6 +9,8 @@ import "animate.css/animate.min.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 import Login from './Pages/Login/Login';
+import SignUp from './Pages/Login/SignUp';
+import Inventory from './Pages/Home/Inventory';
 AOS.init();
 function App() {
 
@@ -17,7 +19,9 @@ function App() {
       <Navbar></Navbar>
     <Routes>
       <Route path='/' element={<Home></Home>}></Route>
+      <Route path='/inventory/:id' element={<Inventory></Inventory>}></Route>
       <Route path='/login' element={<Login></Login>}></Route>
+      <Route path='/signup' element={<SignUp></SignUp>}></Route>
     </Routes>
     </div>
   );
