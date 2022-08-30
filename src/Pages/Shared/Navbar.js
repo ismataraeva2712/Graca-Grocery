@@ -14,8 +14,16 @@ const Navbar = () => {
      const menuItem=<>
         <li><Link to='/'>Home</Link></li>
        
-        <li><Link to='/about'>About</Link></li>
-        <li><Link to='/contact'>Contact us</Link></li>
+        <li><Link to='/blog'>Blogs</Link></li>
+        {
+          user && <>
+          <li><Link to='/manageInventories'>All Items</Link></li>
+        <li><Link to='/addItem'>Add Item</Link></li>
+        <li><Link to='/myItem'>My Item</Link></li>
+          
+          </>
+        }
+        
         <li>{user? <p onClick={ logout}>Sign Out</p>:<Link to='/login'>Login</Link>}</li>
         </>
     return (
@@ -26,7 +34,7 @@ const Navbar = () => {
       <label tabindex="0" class="btn btn-ghost lg:hidden">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
       </label>
-      <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+      <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-neutral">
         {menuItem}
       </ul>
     </div>

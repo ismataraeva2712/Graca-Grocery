@@ -3,11 +3,11 @@ import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-fireba
 import { useForm } from 'react-hook-form';
 import auth from '../../firebase.init';
 import Loading from './Loading';
-import { Link } from 'react-router-dom';
-import {FaUserAlt} from 'react-icons/fa';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { FaUserAlt } from 'react-icons/fa';
 const Login = () => {
-    
-    const [signInWithGoogle, guser, gLoading, gError] = useSignInWithGoogle(auth);
+
+    const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [
         signInWithEmailAndPassword,
         user,
@@ -15,14 +15,21 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
     const { register, formState: { errors }, handleSubmit } = useForm();
-    if (true ||loading || gLoading) {
-      <Loading></Loading>
+    const navigate = useNavigate()
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+
+    if (loading || gLoading) {
+        <Loading></Loading>
     }
     let errorMessage;
-    if(gError|| error){
-        errorMessage=<p className='text-primary'>{gError?.message||error?.message}</p>
+    if (gError || error) {
+        errorMessage = <p className='text-primary'>{gError?.message || error?.message}</p>
     }
-   
+    if (user || gUser) {
+        navigate(from, { replace: true })
+    }
+
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password)
     };
@@ -31,7 +38,7 @@ const Login = () => {
             <div class="card w-96 bg-base-100 shadow-xl">
 
                 <div class="card-body items-center text-center">
-                    <h2 class="card-title font-bold"> <FaUserAlt className='text-primary'/> LogIn</h2>
+                    <h2 class="card-title font-bold"> <FaUserAlt className='text-primary' /> LogIn</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
@@ -86,7 +93,7 @@ const Login = () => {
                             </label>
                         </div>
                         {errorMessage}
-                 <input  className='btn w-full max-w-xs btn-primary ' type="submit" value='Log in'  />
+                        <input className='btn w-full max-w-xs btn-primary ' type="submit" value='Log in' />
                     </form>
                     <p><small>New to <span >Groca-Grocery</span>?<Link className='text-sky-600' to='/signup'>Create an account</Link></small></p>
                     <div class="divider">OR</div>

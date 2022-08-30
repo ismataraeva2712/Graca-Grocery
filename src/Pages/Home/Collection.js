@@ -12,7 +12,7 @@ const Collection = ({ collection }) => {
   }
   return (
     <AnimationOnScroll animateIn="animate__bounceIn" duration={5} >
-      <div class="card w-96 bg-base-100 shadow-xl">
+      <div class="card max-w-sm bg-base-100 shadow-xl">
         <figure><img src={picture} alt="Shoes" style={{ height: '200px' }} /></figure>
         <div class="card-body">
           <h2 class="card-title">

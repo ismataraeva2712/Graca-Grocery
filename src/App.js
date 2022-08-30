@@ -13,6 +13,12 @@ import SignUp from './Pages/Login/SignUp';
 import Inventory from './Pages/Home/Inventory';
 import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import RequireAuth from './Pages/Login/RequireAuth';
+import ManageInventories from './Pages/Home/ManageInventories';
+import AddItem from './Pages/Home/AddItem';
+import Notfound from './Pages/Shared/Notfound';
+import Blog from './Pages/Shared/Blog';
+import MyItem from './Pages/Home/MyItem';
 AOS.init();
 function App() {
 
@@ -21,9 +27,14 @@ function App() {
       <Navbar></Navbar>
     <Routes>
       <Route path='/' element={<Home></Home>}></Route>
-      <Route path='/inventory/:id' element={<Inventory></Inventory>}></Route>
+      <Route path='/blog' element={<Blog></Blog>}></Route>
+      <Route path='/inventory/:id' element={<RequireAuth><Inventory></Inventory></RequireAuth>}></Route>
+      <Route path='/manageInventories' element={<RequireAuth><ManageInventories></ManageInventories></RequireAuth>}></Route>
+      <Route path='/myItem' element={<RequireAuth><MyItem></MyItem></RequireAuth>}></Route>
+      <Route path='/addItem' element={<RequireAuth><AddItem></AddItem></RequireAuth>}></Route>
       <Route path='/login' element={<Login></Login>}></Route>
       <Route path='/signup' element={<SignUp></SignUp>}></Route>
+      <Route path='*' element={<Notfound></Notfound>}></Route>
     </Routes>
     <ToastContainer />
     </div>

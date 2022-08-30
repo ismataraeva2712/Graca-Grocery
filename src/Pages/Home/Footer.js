@@ -3,8 +3,8 @@ import { GiFruitBowl } from 'react-icons/gi';
 import { GiFruiting} from 'react-icons/gi';
 const Footer = () => {
     return (
-        <div>
-            <footer class="footer p-10 bg-black text-neutral-content">
+        <div >
+            <footer class="footer pt-8 p-10 bg-black text-neutral-content">
             <div>
     
             <   GiFruiting size={30}  /> <p>Graca-Grocery<br></br>Providing reliable since 2002</p>
