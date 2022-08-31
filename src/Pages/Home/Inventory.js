@@ -8,7 +8,7 @@ const Inventory = () => {
     const [item, setItem] = useState({})
     const [update,setUpdate] = useState({})
     useEffect(() => {
-        fetch(`http://localhost:5000/items/${id}`)
+        fetch(`https://lit-forest-84531.herokuapp.com/items/${id}`)
             .then(res => res.json())
             .then(data => setItem(data))
     }, [update])
@@ -16,7 +16,7 @@ const Inventory = () => {
         if(item.quantity>0){
             const newQuantity=parseInt(item.quantity)-1
             const updatedQuantity={quantity:newQuantity}
-            fetch(`http://localhost:5000/items/${id}`,{
+            fetch(`https://lit-forest-84531.herokuapp.com/items/${id}`,{
                 method:'PUT',
                 headers:{
                     'content-type':'application/json'
@@ -38,7 +38,7 @@ const Inventory = () => {
         event.preventDefault()
         const newQuantity=parseInt(event.target.quantity.value )+parseInt(item.quantity)
         const updatedQuantity={quantity : newQuantity}
-        fetch(`http://localhost:5000/items/${id}`,{
+        fetch(`https://lit-forest-84531.herokuapp.com/items/${id}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json'

@@ -7,7 +7,7 @@ import AllItem from './AllItem';
 const ManageInventories = () => {
     const[allItems,setAllItems]=useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/items')
+        fetch('https://lit-forest-84531.herokuapp.com/items')
         .then(res=>res.json())
         .then(data=>setAllItems(data))
        
@@ -16,7 +16,7 @@ const ManageInventories = () => {
     const handleDelete=id=>{
         const proceed=window.confirm('Are you sure you want to delete?')
         if(proceed){
-            const url=`http://localhost:5000/items/${id}`
+            const url=`https://lit-forest-84531.herokuapp.com/items/${id}`
             fetch(url,{
                 method:'DELETE'
             })

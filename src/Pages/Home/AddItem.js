@@ -17,7 +17,7 @@ const AddItem = () => {
     const [user] = useAuthState(auth)
     const onSubmit = data => {
         console.log({ ...data, email: user.email })
-        const url = `http://localhost:5000/items`
+        const url = `https://lit-forest-84531.herokuapp.com/items`
         fetch(url, {
             method: 'POST',
             headers: {

@@ -11,7 +11,7 @@ const MyItem = () => {
     const[myItem,setMyItem]=useState([])
     const [user] = useAuthState(auth)
     useEffect(()=>{
-        const url = `http://localhost:5000/myItem?email=${user.email}`
+        const url = `https://lit-forest-84531.herokuapp.com/myItem?email=${user.email}`
         try {
             fetch(url, {
                 headers: {
@@ -38,7 +38,7 @@ const MyItem = () => {
     const handleDelete=id=>{
         const proceed=window.confirm('Are you sure you want to delete?')
         if(proceed){
-            const url=`http://localhost:5000/items/${id}`
+            const url=`https://lit-forest-84531.herokuapp.com/items/${id}`
             fetch(url,{
                 method:'DELETE'
             })
